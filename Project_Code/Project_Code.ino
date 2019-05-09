@@ -208,29 +208,69 @@ void loop(){
   vr = v - (l*w/2);
   
   //maximum speed each wheel can travel is 3m/s --> 1024/0.7 = 1462.857
-  pwm_l = abs(1462.857*vl);
-  pwm_r = abs(1462.857*vr);
+  pwm_l = (1024 - 700) * (vl/0.7) + 700;
+  pwm_r = (1024 - 700) * (vr/0.7) + 700; 
 
+  if (pwm_l > 0){
 
-  if(pwm_l > 1024){
-    pwm_l = 1024; 
+    //must switch off mototrs before switching direction
+    if (flag_p_l != 1){
+      analogWrite(EN1, 0);  
+      flag_p_l = 1;
+      delay(100);
+    }
+    
+    digitalWrite(IN1, LOW);
+    digitalWrite(IN2, HIGH);
+
+     
+  }else{
+
+    //must switch off mototrs before switching direction
+    if (flag_p_L == 1){
+      analogWrite(EN1, 0);  
+      flag_p_r = 0;
+      delay(100);
+    }
+
+    
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, LOW);
+    pwm_l = abs(pwm_l);
+
   }
+
+  if (pwm_r > 0){
+
+    //must switch off mototrs before switching direction
+    if (flag_p_r != 1){
+      analogWrite(EN2, 0);  
+      flag_p_r = 1;
+      delay(100);
+    }
+
+    digitalWrite(IN3, HIGH);
+    digitalWrite(IN4, LOW);
   
-  if(pwm_r > 1024){
-    pwm_r = 1024; 
-  }
+     
+  }else{
 
-  if(pwm_l < 700){
-    pwm_l = 700; 
-  }
-  
-  if(pwm_r < 700){
-    pwm_r = 700; 
+    //must switch off mototrs before switching direction
+    if (flag_p_r == 1){
+      analogWrite(EN2, 0);  
+      flag_p_r = 0;
+      delay(100);
+    }
+
+    digitalWrite(IN3, LOW);
+    digitalWrite(IN4, HIGH);
+    pwm_r = abs(pwm_r);
+
   }
   
   //apply required speed for each motor 
   //note: the 0.9 factor is just used for calibration since the motors aren't identical
-  analogWrite(EN1, pwm_l*0.9);
+  analogWrite(EN1, pwm_l*0.9);  
   analogWrite(EN2, pwm_r);
 
   SendData(x, y, vl, vr, pwm_l, pwm_r, ts, count1, count2, rev1, rev2, v1, v2, v_actual, Ax, Ay, Az, T, Gx, Gy, Gz);
