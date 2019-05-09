@@ -1,13 +1,16 @@
+var express = require('express')
+var path = require('path');
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded())
+app.use(express.static(__dirname + '/src'));
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/src/index.html');
+  res.sendFile(express.static(__dirname + '/src/index.html'));
 });
 
 app.post("/data", function(req, res) {
