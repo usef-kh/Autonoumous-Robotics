@@ -36,35 +36,54 @@
 #define radius 0.032955
 
 //requirements to run robot
-float count1 = 0;
-float count2 = 0;
-float rev1 = 0;
-float rev2 = 0;
-float v1, v2, v_actual;
-float ts = 0;
-float tremove = 0;
+double count1 = 0;
+double count2 = 0;
+double rev1 = 0;
+double rev2 = 0;
+double v1, v2, v_actual;
+double ts = 0;
+double tremove = 0;
 bool flag_p_l = 1;
 bool flag_p_r = 1;
 
 
 //requirements to run ackremenas steering
-#define h 0.5
-#define k1 0.5
-#define k2 0.5
+#define h 1
+#define k1 0.1
+#define k2 0.1
 #define l 0.157
+#define w1 0.8
+#define w2 0.2
+#define w3 0.8
+#define w4 0.2
 
 //initial conditions
+
+double x_1= 0;
+double x_2= 0;
+
+double y_1= 0;
+double y_2= 0;
+
+double Vx = 0;
+double Vy = 0;
+
 double x = 0;
 double y = 0;
 double theta = 0;
-double w = 0;
+
 double v = 0;
+double w = 0;
+
 double xh = 0;
 double yh = 0;
+
 double e1 = 0;
 double e2 = 0;
+
 double vl = 0;
 double vr = 0;
+
 double pwm_l = 0;
 double pwm_r = 0;
 
@@ -170,6 +189,12 @@ void loop(){
   v_actual = (v1 + v2)/2;
 
   
+  //obtaining positions using integration of encoder velocity 
+  x_1= x_1+ ts*v_actual*cos(theta);
+  y_1= y_1+ ts*v_actual*sin(theta);
+  theta = theta + ts*w;
+  
+  
   //reset counter values in preperation for next v measurement
   count1 = 0;
   count2 = 0;
@@ -185,12 +210,21 @@ void loop(){
   Gy = (double)GyroY/GyroScaleFactor;
   Gz = (double)GyroZ/GyroScaleFactor;
 
-  
-  //implementing ackermans seering
-  x = x + ts*v_actual*cos(theta);
-  y = y + ts*v_actual*sin(theta);
-  theta = theta + ts*w;
+  //obtaining velocities using integration of accelerometer values
+  Vx = Vx + ts*Ax;
+  Vy = Vy + ts*Ay;
 
+  //obtain position using second integration of accelerometer
+  x_2= x_2+ ts*Vx;
+  y_2= y_2+ ts*Vy;
+
+  //obtaining an estimate of position using complementary filter  
+  x = x_1 * w1 + x_2 * w2;
+  y = y_1 * w3 + y_2 * w4;
+  
+
+
+  //implementing ackremans steering
   xh = x + h*cos(theta);
   yh = y + h*sin(theta);
 
