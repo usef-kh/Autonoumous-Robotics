@@ -49,13 +49,13 @@ bool flag_p_r = 1;
 
 //requirements to run ackremenas steering
 #define h 1
-#define k1 0.1
-#define k2 0.1
+#define k1 0.2
+#define k2 0.2
 #define l 0.157
-#define w1 0.8
-#define w2 0.2
-#define w3 0.8
-#define w4 0.2
+#define w1 0.05
+#define w2 0.95
+#define w3 0.05
+#define w4 0.95
 
 //initial conditions
 
@@ -89,8 +89,8 @@ double pwm_r = 0;
 
 
 //final point
-double xr = 2;
-double yr = 2;
+double xr = 200;
+double yr = 200;
 
 
 // Connection credentials
@@ -240,9 +240,9 @@ void loop(){
   vr = v - (l*w/2);
 
   
-  //scaling the voltage values between 600 - 1024
-  pwm_l = ((1024 - 600) * (vl/0.7)) + 600;
-  pwm_r = ((1024 - 600) * (vr/0.7)) + 600; 
+  //scaling the voltage values between 650 - 1024
+  pwm_l = ((1024 - 750) * (vl/25)) + 750;
+  pwm_r = ((1024 - 750) * (vr/25)) + 750; 
 
   //apply voltages to wheels
   if (pwm_l > 0){
@@ -312,7 +312,7 @@ void loop(){
   analogWrite(EN2, pwm_r);
 
   SendData(x, y, vl, vr, pwm_l, pwm_r, ts, count1, count2, rev1, rev2, v1, v2, v_actual, Ax, Ay, Az, T, Gx, Gy, Gz);
-  delay(100);
+  delay(300);
 }
 
 // --------------------  ACCELEROMETER FUNCTIONS --------------------
