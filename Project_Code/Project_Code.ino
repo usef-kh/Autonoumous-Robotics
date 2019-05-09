@@ -210,12 +210,12 @@ void loop(){
   //apply voltages to wheels
   if (pwm_l > 0){
 
-    //must switch off mototrs before switching direction
-    if (flag_p_l != 1){
-      analogWrite(EN1, 0);  
-      flag_p_l = 1;
-      delay(100);
-    }
+//    //must switch off mototrs before switching direction
+//    if (flag_p_l != 1){
+//      analogWrite(EN1, 0);  
+//      flag_p_l = 1;
+//      delay(100);
+//    }
     
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, HIGH);
@@ -223,13 +223,15 @@ void loop(){
      
   }else{
 
-    //must switch off mototrs before switching direction
-    if (flag_p_L == 1){
-      analogWrite(EN1, 0);  
-      flag_p_r = 0;
-      delay(100);
-    }
+//    //must switch off mototrs before switching direction
+//    if (flag_p_L == 1){
+//      analogWrite(EN1, 0);  
+//      flag_p_r = 0;
+//      delay(100);
+//    }
 
+    analogWrite(EN1, 0);  
+    delay(100);
     
     digitalWrite(IN1, HIGH);
     digitalWrite(IN2, LOW);
@@ -239,12 +241,12 @@ void loop(){
 
   if (pwm_r > 0){
 
-    //must switch off mototrs before switching direction
-    if (flag_p_r != 1){
-      analogWrite(EN2, 0);  
-      flag_p_r = 1;
-      delay(100);
-    }
+//    //must switch off mototrs before switching direction
+//    if (flag_p_r != 1){
+//      analogWrite(EN2, 0);  
+//      flag_p_r = 1;
+//      delay(100);
+//    }
 
     digitalWrite(IN3, HIGH);
     digitalWrite(IN4, LOW);
@@ -252,18 +254,24 @@ void loop(){
      
   }else{
 
-    //must switch off mototrs before switching direction
-    if (flag_p_r == 1){
-      analogWrite(EN2, 0);  
-      flag_p_r = 0;
-      delay(100);
-    }
+//    //must switch off mototrs before switching direction
+//    if (flag_p_r == 1){
+//      analogWrite(EN2, 0);  
+//      flag_p_r = 0;
+//      delay(100);
+//    }
+    
+    analogWrite(EN2, 0);  
+    delay(100);
 
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
     pwm_r = abs(pwm_r);
 
   }
+
+
+
   
   //apply required speed for each motor 
   //note: the 0.9 factor is just used for calibration since the motors aren't identical
