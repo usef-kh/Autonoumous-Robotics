@@ -6,10 +6,73 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Robot Page</title>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="./p5.min.js"></script>
-  <script src="./p5.dom.min.js"></script>
-  <script src="./sketch.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rickshaw/1.6.6/rickshaw.min.js"></script> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rickshaw/1.6.6/rickshaw.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
+
+  <h1 class="Heading">Real Time Robot Data</h1>
+
+  <div id="Graphs">
+
+    <div id="Graph of X" class="Graph Box">
+      <h2>Graph of X</h2>
+      <div id="x"></div>
+    </div>
+
+    <div id="Graph of Y" class="Graph Box">
+        <h2>Graph of Y</h2>
+        <div id="y"></div>
+    </div>
+
+    <div id="Left wheel Velocity in RPM" class="Graph Box">
+        <h2>Graph of Left Wheel Velocity</h2>
+        <div id="vl"></div>
+    </div>
+
+    <div id="Right wheel Velocity in RPM" class="Graph Box">
+        <h2>Graph of Right Wheel Velocity</h2>
+        <div id="vr"></div>
+    </div>
+
+    <div id="Velocity of Robot" class="Graph Box">
+        <h2>Graph of Velocity of Robot</h2>
+        <div id="V Actual"></div>
+    </div>
+
+    <div id="X axis Acceleration" class="Graph Box">
+        <h2>Graph of X axis Acceleration</h2>
+        <div id="AX"></div>
+    </div>
+
+    <div id="Y axis Acceleration" class="Graph Box">
+        <h2>Graph of Y axis Acceleration</h2>
+        <div id="AY"></div>
+    </div>
+
+    <div id="Z axis Acceleration" class="Graph Box">
+        <h2>Graph of Z axis Acceleration</h2>
+        <div id="AZ"></div>
+    </div>
+
+  </div>
+  <script src="./sketch.js"></script>
 </body>
 </html>
+
+<!-- <div id="y"></div>
+<div id="vl"></div>
+<div id="vr"></div>
+<div id="pwm_l"></div>
+<div id="pwm_r"></div>
+<div id="TS"></div>
+<div id="V1"></div>
+<div id="V2"></div>
+<div id="V Actual"></div>
+<div id="AX"></div>
+<div id="AY"></div>
+<div id="AZ"></div> -->

@@ -1,0 +1,9 @@
+#Graphs{
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    grid-template-rows: repeat(3, auto);
+}
+
+#Graphs>div>h2{
+    text-align: center;
+}

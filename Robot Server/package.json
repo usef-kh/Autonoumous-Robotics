@@ -4,7 +4,7 @@
   "description": "An un-opinionated, minimal boilerplate to get started with Express.JS, Socket.io",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx nodemon server"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/thomasyimgit/express-socket.io-boilerplate#readme",
   "dependencies": {
+    "d3": "^5.9.2",
     "express": "^4.16.2",
     "socket.io": "^2.0.4"
   },
