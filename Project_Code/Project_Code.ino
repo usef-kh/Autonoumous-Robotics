@@ -71,10 +71,6 @@ double xr = 2;
 double yr = 2;
 
 
-
-
-
-
 // Connection credentials
 const char* WIFI_NAME = "Daedalus";
 const char* WIFI_PASS = "flightoficarus";
@@ -171,7 +167,7 @@ void loop(){
   v_actual = (v1 + v2)/2;
 
   
-  //reset counter values
+  //reset counter values in preperation for next v measurement
   count1 = 0;
   count2 = 0;
   
@@ -181,14 +177,12 @@ void loop(){
   Ax = (double)AccelX*9.81/AccelScaleFactor;
   Ay = (double)AccelY*9.81/AccelScaleFactor;
   Az = (double)AccelZ*9.81/AccelScaleFactor;
-  T = (double)Temperature/340+36.53; //temperature formula
+  T =  (double)Temperature/340+36.53;         //temperature formula
   Gx = (double)GyroX/GyroScaleFactor;
   Gy = (double)GyroY/GyroScaleFactor;
   Gz = (double)GyroZ/GyroScaleFactor;
 
   
-  
-
   //implementing ackermans seering
   x = x + ts*v_actual*cos(theta);
   y = y + ts*v_actual*sin(theta);
@@ -203,14 +197,17 @@ void loop(){
   v = (k1*cos(theta) + k2*sin(theta))*e1;
   w = ((-k1*sin(theta)/h) + (-k2*cos(theta)/h))*e2;
 
+
   //obtain required speed for each motor
   vl = v + (l*w/2);
   vr = v - (l*w/2);
-  
-  //maximum speed each wheel can travel is 3m/s --> 1024/0.7 = 1462.857
-  pwm_l = (1024 - 700) * (vl/0.7) + 700;
-  pwm_r = (1024 - 700) * (vr/0.7) + 700; 
 
+  
+  //scaling the voltage values between 600 - 1024
+  pwm_l = ((1024 - 600) * (vl/0.7)) + 600;
+  pwm_r = ((1024 - 600) * (vr/0.7)) + 600; 
+
+  //apply voltages to wheels
   if (pwm_l > 0){
 
     //must switch off mototrs before switching direction
