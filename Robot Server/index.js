@@ -21,10 +21,6 @@ app.post("/data", function(req, res) {
 
 io.on('connection', function(socket){
   console.log('a user connected');
-
-  // socket.on('custom-event', function(value){
-  //   io.emit('custom-event', value);
-  // });
 });
 
 
