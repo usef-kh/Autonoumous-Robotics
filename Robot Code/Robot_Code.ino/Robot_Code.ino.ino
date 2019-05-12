@@ -52,10 +52,10 @@ bool flag_p_r = 1;
 #define k1 0.2
 #define k2 0.2
 #define l 0.157
-#define w1 0.05
-#define w2 0.95
-#define w3 0.05
-#define w4 0.95
+#define w1 0.3
+#define w2 0.7
+#define w3 0.3
+#define w4 0.7
 
 //initial conditions
 

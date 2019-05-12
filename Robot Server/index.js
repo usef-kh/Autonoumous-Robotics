@@ -6,7 +6,7 @@ var io = require('socket.io')(http);
 var bodyParser = require('body-parser');
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(__dirname + '/src'));
 
 app.get('/', function(req, res){

@@ -4,7 +4,7 @@ class Data{
     constructor(width, height, id, timestep) {
         this.height = height;
         this.width = width;
-        this.name = id
+        this.name = id;
         this.data = [{x: 0, y: 0}];
         this.graph = this.makeGraph();
         this.x = this.makeXAxis();
@@ -62,20 +62,18 @@ class Data{
 }
 
 
-// ts = new Data(400, 240, 'TS');
-x = new Data(400, 240, 'x');
-y = new Data(400, 240, 'y');
-vl = new Data(400, 240, 'vl');
-vr = new Data(400, 240, 'vr');
-v1 = new Data(400, 240, 'V1');
-v2 = new Data(400, 240, 'V2');
-v = new Data(400, 240, 'V Actual');
-ax = new Data(400, 240, 'AX');
-ay = new Data(400, 240, 'AY');
-az = new Data(400, 240, 'AZ');
+x = new Data(400, 240, 'x', 0.5);
+y = new Data(400, 240, 'y', 0.5);
+vl = new Data(400, 240, 'vl', 0.5);
+vr = new Data(400, 240, 'vr', 0.5);
+v1 = new Data(400, 240, 'V1', 0.5);
+v2 = new Data(400, 240, 'V2', 0.5);
+v = new Data(400, 240, 'V Actual', 0.5);
+ax = new Data(400, 240, 'AX', 0.5);
+ay = new Data(400, 240, 'AY', 0.5);
+az = new Data(400, 240, 'AZ', 0.5);
 
 socket.on('data', function (data) {
-    let ts = 
     x.extractValues(data)
     y.extractValues(data)
     vl.extractValues(data)
