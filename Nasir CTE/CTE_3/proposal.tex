@@ -1,0 +1,101 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[english]{babel}
+\usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{natbib}
+\usepackage{listings}
+\usepackage{url}
+\usepackage{wrapfig}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+% \usepackage{vmargin}
+\usepackage{caption}
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\title{Project CTE \#3 Document}
+\author{Nasir Mohammad Khalid}
+\date{May 13, 2019}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\begin{document} 
+    \begin{titlepage}
+        \centering
+        \vspace*{0.5 cm}
+        \includegraphics[scale = 0.60]{logo.png}\\[1.0 cm]	% University Logo
+        \textsc{\LARGE American University of Sharjah}\\[1.0 cm]
+        \textsc{\Large ELE494-08}\\[0.2 cm]	
+        \textsc{\Large Autonomous robotic systems}\\[0.5 cm]			% Course Code
+        \rule{\linewidth}{0.2 mm} \\[0.4 cm]
+        { \huge \bfseries \thetitle}\\
+        \rule{\linewidth}{0.2 mm} \\[1.5 cm]
+        
+        \textsc{\Large{\theauthor}}\\[0.3 cm]
+        \textsc{\Large{65082}}\\[0.3 cm]
+        \textsc{\Large{\thedate}}\\[1.5 cm]
+
+        \textmd{Submitted To: \itshape{Dr.Shayok Mukhopadhyay}}
+    \end{titlepage}
+
+    \section{Result Achieved}
+
+    Through the project I was able to develop a deeper understanding of autonomous robotic systems and the theory behind them.
+    Working with the hardware was a new opportunity to learn how to interface with sensors and configure a different microcontroller to them.
+    It also gave me the opportunity to learn programming languages I had little experience with previously. However, the most interesting
+    part of the project was developing an entire system from scratch because this was not done before in other courses, figuring out the components,
+    body, programming, software etc. By the end of the project I had been successful in my attempts to get real time data and configure sensors
+    as well as helping my partner in developing the system code for the Robot and assembly.
+
+    \section{Contribution}
+
+    While the items listed below are things I dedicated most of my time to, it is important to note that my partner Youssef and
+    me would work at the same time so there was constant input by both of us on the tasks that each person was doing. Therefore, although
+    I had 'worked' on these parts it in no way discredits the efforts of my partner in development:
+    
+    \begin{itemize}
+        \item Identifying components to order for Robot
+        \item Soldering work and Robot assembly
+        \item Developing all code to interface with the Encoders and Accelerometer
+        \item Developing code for connection of microcontroller to server
+        \item Developing code for frontend/backend (All Visualization)
+        \item Setting up Github Repository for Project
+    \end{itemize}
+
+    By examining our Github Repository and it's commits it also shows our contributions to the code of the project
+    over time (https://github.com/NasirKhalid24/ELE494-08-Project). In terms of novelty, from our research we were unable
+    to find a system like ours where data was transmitted in real time the same way we had done it through a front and back end.
+
+\end{document}
